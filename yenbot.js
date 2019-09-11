@@ -25,7 +25,7 @@ client.on("ready", () => {
 client.on("message", msg => {
   if(channelCheck(msg.channel.id)){
     if (msg.content.startsWith("decide")){
-      msg.reply(parseInt(decision(msg.content.split(" ")[1])));
+      msg.reply(decision(parseInt(msg.content.split(" ")[1])));
     }
     if (msg.content === "ping") {
       msg.reply("pong");
@@ -36,4 +36,4 @@ client.on("message", msg => {
   }
 });
 
-client.login("");
+client.login(JSON.parse("./config.json"));
