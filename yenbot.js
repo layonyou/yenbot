@@ -11,7 +11,11 @@ function channelCheck(channelID){
 }
 
 function decision(maxOptions){
-  return maxOptions;
+  if(typeof maxOptions != "number"){
+    return "Error: Not a number! Can't decide :("
+  } else {
+  return Math.floor(Math.random() * maxOptions) + 1;
+  }
 }
 
 client.on("ready", () => {
@@ -21,7 +25,7 @@ client.on("ready", () => {
 client.on("message", msg => {
   if(channelCheck(msg.channel.id)){
     if (msg.content.startsWith("decide")){
-      msg.reply(typeof parseInt(decision(msg.content.split(" ")[1])));
+      msg.reply(parseInt(decision(msg.content.split(" ")[1])));
     }
     if (msg.content === "ping") {
       msg.reply("pong");
